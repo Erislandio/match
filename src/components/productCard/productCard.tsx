@@ -9,26 +9,28 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
 
   return (
     <div
-      className="card flex my-8 flex-col items-center justify-center"
+      className="card flex my-5 min-h-[300px] flex-col items-center justify-center border rounded-md border-gray-100 p-2"
       key={product.id}
     >
       <Image
         src={proudctImage}
         className="w-full h-full max-h-72 border-gray-200 border-solid border-b "
         alt={product.title}
-        height={250}
-        width={250}
+        height={200}
+        width={200}
       />
-      <h5 className="text-gray-800 text-xl">{product.title}</h5>
+      <h5 className="text-gray-800 text-sm mt-5 text-center">
+        {product.title}
+      </h5>
       <div className="price">
-        <span className="text-red-400 text-xl font-bold">
+        <span className="text-red-400 text-lg font-bold">
           {product.price.toLocaleString("pt-br", {
             style: "currency",
             currency: "BRL",
           })}
         </span>
       </div>
-      <button className="w-full uppercase p-2 rounded-full text-lg bg-red-400 mt-6 text-white">
+      <button className="w-full uppercase p-1 rounded-md text-base bg-red-400 mt-6 text-white">
         Presentear
       </button>
     </div>

@@ -149,7 +149,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
             </select>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center ">
+        <div className="grid gap-1 flex-col items-center justify-center grid-cols-2">
           {sortedProducts.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))}
