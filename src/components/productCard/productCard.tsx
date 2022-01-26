@@ -9,7 +9,7 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
 
   return (
     <div
-      className="card flex my-5 min-h-[300px] flex-col items-center justify-center border rounded-md border-gray-100 p-2"
+      className="card flex min-h-[300px] flex-col items-center justify-center border rounded-md border-gray-100 p-2"
       key={product.id}
     >
       <Image
