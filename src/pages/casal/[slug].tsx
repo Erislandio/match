@@ -125,6 +125,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
           <div className=" mb-4 flex items-center justify-between border p-3 border-b border-gray-200 rounded-md">
             <span>Categorias: </span>
             <select
+              className="border-none bg-white"
               onChange={(event) => handleChangeCategory(event.target.value)}
             >
               {categoriesOptions.map((category) => (
@@ -137,6 +138,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
           <div className="flex items-center justify-between border p-3 border-b border-gray-200 rounded-md">
             <span>Preco: </span>
             <select
+              className="border-none bg-white"
               onChange={(event) => handleChangePriceSort(event.target.value)}
             >
               {sortedPriceOptions.map((sortType) => (
