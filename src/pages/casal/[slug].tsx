@@ -127,6 +127,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
             <select
               className="border-none bg-white"
               onChange={(event) => handleChangeCategory(event.target.value)}
+              style={{minWidth: "150px"}}
             >
               {categoriesOptions.map((category) => (
                 <option key={category.title} value={category.title}>
@@ -140,6 +141,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
             <select
               className="border-none bg-white"
               onChange={(event) => handleChangePriceSort(event.target.value)}
+              style={{minWidth: "150px"}}
             >
               {sortedPriceOptions.map((sortType) => (
                 <option key={sortType} value={sortType}>

@@ -19,7 +19,7 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
         height={200}
         width={200}
       />
-      <h5 className="text-gray-800 text-sm mt-5 text-center">
+      <h5 className="text-gray-800 text-sm mt-5 text-center ">
         {product.title}
       </h5>
       <div className="price">
