@@ -110,7 +110,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
   }
 
   return (
-    <div className="container w-screen h-screen">
+    <div className="container w-screen">
       <Banner alt={pair.coulpeName} url={topBanner.url} id={topBanner.id} />
       <section className="about p-5">
         <ReactMarkdown className={classNames(s["markdown-container"])}>

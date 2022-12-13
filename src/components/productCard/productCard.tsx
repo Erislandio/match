@@ -8,7 +8,7 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
 
   return (
     <div
-      className="card flex min-h-[300px] flex-col items-center justify-center border rounded-md border-gray-200 p-2"
+      className="card flex min-h-[300px] flex-col items-center justify-center border border-gray-200 p-2"
       key={product.id}
     >
       <img
@@ -38,7 +38,7 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
           })}
         </span>
       </div>
-      <button className="w-full uppercase p-1 rounded-md text-base bg-red-400 mt-6 text-white">
+      <button className="w-full uppercase p-1 text-base bg-red-400 mt-2 text-white">
         Presentear
       </button>
     </div>

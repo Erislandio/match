@@ -7,7 +7,8 @@ const nextConfig = {
       'media.graphcms.com',
       "media.graphassets.com/uwOPvJhrQIGk8kbTx5gq"
     ]
-  },  
+  },
+  "presets": ["next/babel"],
   env: {
     NEXT_PUBLIC_GRAPHCMS_URL: 'https://api-sa-east-1.graphcms.com/v2/ckysnx6ty05mp01z608ub6w03/master'
   }
