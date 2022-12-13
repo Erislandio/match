@@ -23,8 +23,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     pairName: slug,
   });
 
-  console.log(pair);
-
   return {
     props: {
       pair,
@@ -87,7 +85,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
     }
 
     return pair?.products.filter(
-      (product) => product.category.title === currentCategory
+      (product) => product?.category?.title === currentCategory
     );
   }, [pair, currentCategory]);
 
@@ -127,7 +125,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
             <select
               className="border-none bg-white"
               onChange={(event) => handleChangeCategory(event.target.value)}
-              style={{minWidth: "150px"}}
+              style={{ minWidth: "150px" }}
             >
               {categoriesOptions.map((category) => (
                 <option key={category.title} value={category.title}>
@@ -141,7 +139,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
             <select
               className="border-none bg-white"
               onChange={(event) => handleChangePriceSort(event.target.value)}
-              style={{minWidth: "150px"}}
+              style={{ minWidth: "150px" }}
             >
               {sortedPriceOptions.map((sortType) => (
                 <option key={sortType} value={sortType}>

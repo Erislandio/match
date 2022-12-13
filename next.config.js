@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     domains: [
       'via.placeholder.com',
-      'media.graphcms.com'
+      'media.graphcms.com',
+      "media.graphassets.com/uwOPvJhrQIGk8kbTx5gq"
     ]
   },  
   env: {

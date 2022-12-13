@@ -1,25 +1,33 @@
-import Image from "next/image";
 import { FC } from "react";
 import { Product } from "../../types/product";
 
 export const ProductCard: FC<{ product: Product }> = ({ product }) => {
-  const proudctImage = product.image[0]?.url
-    ? product.image[0]?.url
-    : `https://via.placeholder.com/500x500?text=${product.title}`;
+  const proudctImage =
+    product.image[0]?.url ??
+    `https://via.placeholder.com/500x500?text=${product.title}`;
 
   return (
     <div
       className="card flex min-h-[300px] flex-col items-center justify-center border rounded-md border-gray-200 p-2"
       key={product.id}
     >
-      <Image
+      <img
         src={proudctImage}
         className="w-full h-full max-h-72 border-gray-200 border-solid border-b "
         alt={product.title}
-        height={200}
-        width={200}
+        height={150}
+        width={150}
+        style={{
+          minHeight: 150,
+          maxHeight: 150,
+        }}
       />
-      <h5 className="text-gray-800 text-sm mt-5 text-center ">
+      <h5
+        className="text-gray-800 text-sm mt-5 text-center overflow-hidden text-ellipsis"
+        style={{
+          minHeight: 40,
+        }}
+      >
         {product.title}
       </h5>
       <div className="price">
