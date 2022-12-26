@@ -1,0 +1,5 @@
+query BuscarConvidado($name: String) {
+  convidado(where: { name: $name }) {
+    id
+  }
+}

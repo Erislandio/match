@@ -1,0 +1,5 @@
+mutation CriarConvidado($name: String!) {
+  createConvidado(data: { name: $name }) {
+    name
+  }
+}

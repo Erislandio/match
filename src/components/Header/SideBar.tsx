@@ -86,7 +86,7 @@ export default function SideBar({
         >
           <Link
             href={{
-              pathname: `/casal/${router.query.slug}/produtos`,
+              pathname: `/casal/${router.query.slug}/confirmar`,
             }}
             passHref
             replace
