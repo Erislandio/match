@@ -100,6 +100,7 @@ export default function Confirmar() {
       <a
         // mudar aqui dps
         target="_blank"
+        rel="noreferrer"
         href="https://wa.me/11995333537?text=Olá! gostária de confirmar minha presença no seu casamento!"
         className="p-2 text-white mt-4 rounded text-sm flex items-center "
         style={{
