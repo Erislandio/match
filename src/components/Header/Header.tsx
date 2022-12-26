@@ -35,8 +35,8 @@ export default function Header() {
       <header
         className={classNames(
           s["header"],
-          "p-2 fixed w-full bg-transparent",
-          scrollPosition > 0 ? s["header__scroll"] : s["header__scroll--off"]
+          "p-4 fixed w-full bg-transparent",
+          s["header__scroll"]
         )}
         style={{}}
       >

@@ -22,6 +22,7 @@ export const GET_PAIR_BY_SLUG = gql`
         category {
           title
         }
+        strapiProductId
         available
         identifier
         description

@@ -93,23 +93,6 @@ export default function SideBar({
             replace
           >
             <span className="flex items-center justify-between w-full px-4 py-2">
-              Padrinhos
-              <PadrinhoIcon />
-            </span>
-          </Link>
-        </li>
-        <li
-          onClick={() => setOpen(false)}
-          className="text-white flex items-center justify-between"
-        >
-          <Link
-            href={{
-              pathname: `/casal/${router.query.slug}/produtos`,
-            }}
-            passHref
-            replace
-          >
-            <span className="flex items-center justify-between w-full px-4 py-2">
               Confirme sua presença
               <ConfirmePresencaIcon />
             </span>
@@ -121,7 +104,7 @@ export default function SideBar({
         >
           <Link
             href={{
-              pathname: `/casal/${router.query.slug}/produtos`,
+              pathname: `/casal/${router.query.slug}/cart`,
             }}
             passHref
             replace

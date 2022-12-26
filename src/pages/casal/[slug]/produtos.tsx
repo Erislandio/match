@@ -2,12 +2,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useCallback, useMemo, useState } from "react";
 import client from "../../../api/graphcms";
 import { GET_PAIR_BY_SLUG } from "../../../api/graphql/query/getPair";
-import Banner from "../../../components/banner/banner";
 import Pair from "../../../types/pair";
-import ReactMarkdown from "react-markdown";
-import classNames from "classnames";
 
-import s from "./casal.module.css";
 import { ProductCard } from "../../../components/productCard/productCard";
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -94,7 +90,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
   }
 
   return (
-    <section className="p-5">
+    <section className="p-4">
       <h3 className="text-2xl text-center mb-6">Nossa lista de presentes</h3>
       <div className="flex iitems-center justify-center flex-col">
         <div className=" mb-4 flex items-center justify-between border p-3 border-b border-gray-200 rounded-md">

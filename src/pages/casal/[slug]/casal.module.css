@@ -9,3 +9,30 @@
 .markdown-container h3 {
   @apply text-3xl mb-3 text-center;
 }
+
+.cart-item {
+  border: 1px solid #dedede;
+  border-radius: 2px;
+}
+
+.btn-success {
+  background-color: #3C6255;
+  color: #fff;
+  width: 100%;
+  padding: 1rem;
+}
+
+.btn-back {
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #2C74B3;
+}
+
+.cart-input__stepper {
+  border: 1px solid #dedede;
+  max-width: 100px;
+}
