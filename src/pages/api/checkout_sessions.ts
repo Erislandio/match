@@ -7,25 +7,20 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    console.log(req.body);
-
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
-        line_items: [
-          {
-            price: req.body.price,
-            quantity: 1,
-          },
-        ],
+        line_items: JSON.parse(req.body),
         mode: "payment",
-        success_url: `${req.headers.origin}/casal/eris-jessica/cart?success=true`,
+        locale: "pt-BR",
+        success_url: `${req.headers.origin}/casal/eris-jessica/orderplaced?success=true`,
       });
 
       res.status(200).send({
         url: session.url,
       });
     } catch (err: any) {
+      console.log(err);
       res.status(err.statusCode || 500).json(err.message);
     }
   } else {

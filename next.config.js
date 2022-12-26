@@ -12,6 +12,7 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_GRAPHCMS_URL: 'https://api-sa-east-1.graphcms.com/v2/ckysnx6ty05mp01z608ub6w03/master',
     STRIPE_SECRET_KEY: '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',
+    // STRIPE_SECRET_KEY: 'sk_test_51MJH3yImByRpPslV0OfXKGgphf17MmrPBzojJ3LczZSRkO8yAcqfAhOveVjY1V1G1Z8e5Fa1njLJgFXuzy5HaJkH00hLUMChhr'
   }
 }
 

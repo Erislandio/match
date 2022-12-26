@@ -88,7 +88,7 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
         }}
       />
       <h5
-        className="text-gray-800 text-sm mt-5 text-center overflow-hidden text-ellipsis"
+        className="text-gray-800 text-sm mt-5 text-center overflow-hidden text-ellipsis font-light"
         style={{
           minHeight: 40,
         }}

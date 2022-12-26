@@ -1,9 +1,10 @@
 import classNames from "classnames";
 import { useRouter } from "next/router";
-import React, { Fragment, useMemo, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import { CHECKOUT_ITEMS_KEY } from "../../../components/productCard/productCard";
 
-interface CartItem {
+export interface CartItem {
   price: number;
   quantity: number;
   stripeId: string;
@@ -20,22 +21,26 @@ import s from "./casal.module.css";
 
 export default function PreviewPage() {
   const { back } = useRouter();
+  const [items, setItems] = useState<CartItem[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  const [items, setItems] = useState<CartItem[]>(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const localStorageItems = localStorage.getItem(CHECKOUT_ITEMS_KEY);
 
       if (!localStorageItems) {
-        return [];
+        return;
       }
 
-      return JSON.parse(
-        localStorage.getItem(CHECKOUT_ITEMS_KEY) ?? "[]"
-      ) as CartItem[];
+      return setItems(
+        JSON.parse(
+          localStorage.getItem(CHECKOUT_ITEMS_KEY) ?? "[]"
+        ) as CartItem[]
+      );
     }
 
-    return [];
-  });
+    return setItems([]);
+  }, []);
 
   const handleRemoveProduct = (id: string) => {
     const newProducts = items.filter((item) => item.stripeId !== id);
@@ -67,69 +72,70 @@ export default function PreviewPage() {
     localStorage.setItem(CHECKOUT_ITEMS_KEY, JSON.stringify(newitems));
   };
 
-  const formateditem = useMemo(() => {
-    return items.map((item) => (
-      <li
-        className={classNames(s["cart-item"], "w-full mb-4 relative")}
-        key={item.stripeId}
+  const formateditem = items.map((item) => (
+    <li
+      className={classNames(s["cart-item"], "w-full mb-4 relative")}
+      key={item.stripeId}
+    >
+      <button
+        onClick={() => handleRemoveProduct(item.stripeId)}
+        className="bg-transparent botder-none absolute right-2 top-2"
       >
-        <button
-          onClick={() => handleRemoveProduct(item.stripeId)}
-          className="bg-transparent botder-none absolute right-2 top-2"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
-            <path d="M6.5 17q-.625 0-1.062-.438Q5 16.125 5 15.5v-10H4V4h4V3h4v1h4v1.5h-1v10q0 .625-.438 1.062Q14.125 17 13.5 17Zm7-11.5h-7v10h7ZM8 14h1.5V7H8Zm2.5 0H12V7h-1.5Zm-4-8.5v10Z" />
-          </svg>
-        </button>
-        <div className="flex items-start justify-start w-full">
-          <img
-            src={item.image}
-            alt={item.name}
-            title={item.name}
-            width={120}
-            height={120}
-          />
-          <div className="p-4">
-            <h4 className="font-light text-sm">{item.name}</h4>
-            <span className="text-red-400 font-extrabold text-base">
-              {item.price.toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL",
-              })}
-            </span>
-            <div
-              className={classNames(
-                s["cart-input__stepper"],
-                "flex items-center justify-between mt-2 p-1"
-              )}
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
+          <path d="M6.5 17q-.625 0-1.062-.438Q5 16.125 5 15.5v-10H4V4h4V3h4v1h4v1.5h-1v10q0 .625-.438 1.062Q14.125 17 13.5 17Zm7-11.5h-7v10h7ZM8 14h1.5V7H8Zm2.5 0H12V7h-1.5Zm-4-8.5v10Z" />
+        </svg>
+      </button>
+      <div className="flex items-start justify-start w-full">
+        <img
+          src={item.image}
+          alt={item.name}
+          title={item.name}
+          width={120}
+          height={120}
+        />
+        <div className="p-4">
+          <h4 className="font-light text-sm">{item.name}</h4>
+          <span className="text-red-400 font-extrabold text-base">
+            {item.price.toLocaleString("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </span>
+          <div
+            className={classNames(
+              s["cart-input__stepper"],
+              "flex items-center justify-between mt-2 p-1"
+            )}
+            style={{
+              minWidth: "100px",
+            }}
+          >
+            <button
+              onClick={() =>
+                handleChangeQuantity(item.stripeId, InputStepper.minus)
+              }
             >
-              <button
-                onClick={() =>
-                  handleChangeQuantity(item.stripeId, InputStepper.minus)
-                }
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
-                  <path d="M5 10.75v-1.5h10v1.5Z" />
-                </svg>
-              </button>
-              <span className="" title={`Quantidade do item ${item.name}`}>
-                {item.quantity}
-              </span>
-              <button
-                onClick={() =>
-                  handleChangeQuantity(item.stripeId, InputStepper.plus)
-                }
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
-                  <path d="M9.25 15v-4.25H5v-1.5h4.25V5h1.5v4.25H15v1.5h-4.25V15Z" />
-                </svg>
-              </button>
-            </div>
+              <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
+                <path d="M5 10.75v-1.5h10v1.5Z" />
+              </svg>
+            </button>
+            <span className="" title={`Quantidade do item ${item.name}`}>
+              {item.quantity}
+            </span>
+            <button
+              onClick={() =>
+                handleChangeQuantity(item.stripeId, InputStepper.plus)
+              }
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20">
+                <path d="M9.25 15v-4.25H5v-1.5h4.25V5h1.5v4.25H15v1.5h-4.25V15Z" />
+              </svg>
+            </button>
           </div>
         </div>
-      </li>
-    ));
-  }, [items]);
+      </div>
+    </li>
+  ));
 
   const totalItems = useMemo(() => {
     return items.reduce(
@@ -138,21 +144,52 @@ export default function PreviewPage() {
     );
   }, [items]);
 
+  const handleFinish = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/checkout_sessions", {
+        method: "POST",
+        body: JSON.stringify(
+          items.map((item) => ({
+            // price: "price_1MJKijImByRpPslV0mMSkddu",
+            price: item.stripeId,
+            quantity: item.quantity,
+          }))
+        ),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          toast.error(
+            `Houve algum problema na finalização do pedido, tente novamente mais tarde!`
+          );
+        }
+      }
+    } catch (error) {
+      toast.error(`Não foi possílve finalizar a compra :-(`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section
       className={classNames(
         s["cart-container"],
         items.length
-          ? "p-4 h-screen flex flex-col"
-          : "p-4 h-screen flex flex-col justify-center items-center"
+          ? `${items.length >= 4 ? "p-4" : "h-screen p-4"}`
+          : "p-4 flex flex-col items-center justify-center h-screen"
       )}
     >
+      <h1 className="text-2xl mt-0 mb-4">Meu carrinho de compras</h1>
       {items.length ? (
-        <Fragment>
-          <div className="mt-12">
-            <ul>{formateditem}</ul>
-          </div>
-          <div className="text-2xl text-red-500 font-extrabold flex items-center justify-between pt-4 pb-4">
+        <div>
+          <ul>{formateditem}</ul>
+          <div className="text-2xl text-red-400 font-extrabold flex items-center justify-between pt-4 pb-4">
             <span>Total: </span>
             <span>
               {totalItems.toLocaleString("pt-br", {
@@ -162,12 +199,14 @@ export default function PreviewPage() {
             </span>
           </div>
           <button
+            onClick={handleFinish}
+            disabled={loading}
             className={classNames(
               s["btn-success"],
               "flex items-center justify-center"
             )}
           >
-            Finalizar compra
+            {loading ? "Finalizando Compra" : "Finalizar compra"}
             <svg
               className="ml-2"
               xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +217,7 @@ export default function PreviewPage() {
               <path d="M5.5 18q-.625 0-1.062-.438Q4 17.125 4 16.5t.438-1.062Q4.875 15 5.5 15t1.062.438Q7 15.875 7 16.5t-.438 1.062Q6.125 18 5.5 18Zm9 0q-.625 0-1.062-.438Q13 17.125 13 16.5t.438-1.062Q13.875 15 14.5 15t1.062.438Q16 15.875 16 16.5t-.438 1.062Q15.125 18 14.5 18ZM5.271 5.5 7 9.5h6.271l1.708-4ZM4.625 4H16.5q.292 0 .427.229t.031.479l-2.312 5.375q-.188.417-.552.667-.365.25-.823.25H6.604l-.875 1.5H16V14H5.75q-.896 0-1.323-.75-.427-.75.011-1.5l1.083-1.875L2.792 3.5H1V2h2.771ZM7 9.5h6.271Z" />
             </svg>
           </button>
-        </Fragment>
+        </div>
       ) : (
         <div
           className={classNames(

@@ -6,7 +6,6 @@ import {
   ConfirmePresencaIcon,
   InícioIcon,
   MapIcon,
-  PadrinhoIcon,
   ProductListIcon,
 } from "../../icons/icons";
 import s from "./header.module.css";
@@ -109,7 +108,7 @@ export default function SideBar({
             passHref
             replace
           >
-            <span className="flex items-center justify-between w-full px-4 py-2">
+            <span className="flex items-center justify-between w-full px-4 py-2 relative">
               Meu carrinho de presentes
               <CartIcon />
             </span>

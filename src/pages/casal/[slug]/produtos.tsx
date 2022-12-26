@@ -90,7 +90,7 @@ export default function CasalHome({ pair }: { pair: Pair }) {
   }
 
   return (
-    <section className="p-4">
+    <section className="p-4 pt-14">
       <h3 className="text-2xl text-center mb-6">Nossa lista de presentes</h3>
       <div className="flex iitems-center justify-center flex-col">
         <div className=" mb-4 flex items-center justify-between border p-3 border-b border-gray-200 rounded-md">
