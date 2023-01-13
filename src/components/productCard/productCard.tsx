@@ -96,7 +96,12 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
         {product.title}
       </h5>
       <div className="price">
-        <span className="text-red-400 text-lg font-bold">
+        <span
+          className=" text-lg font-bold"
+          style={{
+            color: "#d45824",
+          }}
+        >
           {product.price.toLocaleString("pt-br", {
             style: "currency",
             currency: "BRL",
@@ -105,7 +110,10 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
       </div>
       <button
         onClick={handleClick}
-        className="w-full uppercase p-1 text-base bg-red-400 mt-2 text-white"
+        className="w-full uppercase p-1 text-base mt-2 text-white"
+        style={{
+          background: "#d45824",
+        }}
       >
         Presentear
       </button>

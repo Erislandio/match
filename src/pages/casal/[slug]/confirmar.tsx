@@ -61,6 +61,8 @@ export default function Confirmar() {
         name: name.toUpperCase(),
       });
 
+      setName("");
+
       return toast.success(`${name} sua presença foi confirmada! `);
     } catch (error) {
       console.log(error);
@@ -89,9 +91,12 @@ export default function Confirmar() {
           placeholder="Nome"
         />
         <button
-          className="bg-red-400 mt-2 w-full text-white p-2"
+          className=" mt-2 w-full text-white p-2"
           disabled={loading}
           onClick={handleClick}
+          style={{
+            background: "#d45824",
+          }}
         >
           {loading ? "Confirmando..." : "Confirmar presença!"}
         </button>

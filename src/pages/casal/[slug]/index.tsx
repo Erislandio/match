@@ -7,6 +7,8 @@ import { GET_PAIR_BY_SLUG } from "../../../api/graphql/query/getPair";
 import Banner from "../../../components/banner/banner";
 import Pair from "../../../types/pair";
 
+import ReactCountDown, { CountdownRenderProps } from "react-countdown";
+
 import s from "./casal.module.css";
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -27,6 +29,48 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       pair,
     },
   };
+};
+
+const renderCountDown = (props: CountdownRenderProps) => {
+  const { days, hours, minutes, seconds } = props;
+
+  return (
+    <div className="text-black text-2xl flex flex-row justify-between">
+      <CountItem value={days} label="Dia" />
+      <CountItem value={hours} label="Hora" />
+      <CountItem value={minutes} label="Minuto" />
+      <CountItem value={seconds} label="Segundo" />
+    </div>
+  );
+};
+
+const CountItem = ({ value, label }: { value: number; label: string }) => {
+  return (
+    <div
+      className="flex flex-col items-center justify-center"
+      style={{
+        background: "#d45824",
+        color: "#fff",
+        minWidth: "75px",
+        minHeight: "75px",
+        borderRadius: "50%",
+        padding: "1rem",
+        width: "65px",
+        height: "65px",
+      }}
+    >
+      <span className="text-2xl">{value}</span>
+      <span className="text-base block mx-2">
+        {value > 1 ? `${label}s` : label}
+      </span>
+    </div>
+  );
+};
+
+const formateDate = (date: string): Date => {
+  const [year, month, day] = date.split("-");
+
+  return new Date(`${month}/${day}/${year}`);
 };
 
 export default function CasalPage({ pair }: { pair: Pair }) {
@@ -63,6 +107,13 @@ export default function CasalPage({ pair }: { pair: Pair }) {
         <ReactMarkdown className={classNames(s["markdown-container"])}>
           {pair.about}
         </ReactMarkdown>
+        <h4 className={s["count-down-title"]}>
+          A contagem regressiva já começou e aguardamos ansiosos!
+        </h4>
+        <ReactCountDown
+          renderer={renderCountDown}
+          date={formateDate(pair.date)}
+        />
       </section>
     </div>
   );

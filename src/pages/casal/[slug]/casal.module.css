@@ -1,13 +1,18 @@
 .markdown-container {
-  @apply text-center
+  text-align: justify;
 }
 
 .markdown-container p {
-    @apply my-5 text-sm text-gray-800 text-center
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 2rem;
+  text-align: justify;
+  margin-bottom: 1rem
 }
 
 .markdown-container h3 {
-  @apply text-3xl mb-3 text-center;
+  @apply text-4xl mb-3 text-center;
+  font-family: "Cookie", cursive;
 }
 
 .cart-item {
@@ -16,7 +21,7 @@
 }
 
 .btn-success {
-  background-color: #3C6255;
+  background-color: #3c6255;
   color: #fff;
   width: 100%;
   padding: 1rem;
@@ -29,10 +34,40 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  color: #2C74B3;
+  color: #2c74b3;
 }
 
 .cart-input__stepper {
   border: 1px solid #dedede;
   max-width: 100px;
+}
+
+.map-section {
+  padding: 1rem;
+  padding-top: 4rem;
+}
+
+.map-section h1 {
+  font-size: 4rem;
+  text-align: center;
+  color: #d45824;
+  font-family: "Cookie", cursive;
+}
+
+.map-description {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.map-section iframe {
+  width: 100% !important;
+}
+
+.count-down-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: "Cookie", cursive;
 }
