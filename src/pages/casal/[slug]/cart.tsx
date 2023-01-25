@@ -87,6 +87,7 @@ export default function PreviewPage() {
       </button>
       <div className="flex items-start justify-start w-full">
         <img
+          className="p-2"
           src={item.image}
           alt={item.name}
           title={item.name}
@@ -95,7 +96,12 @@ export default function PreviewPage() {
         />
         <div className="p-4">
           <h4 className="font-light text-sm">{item.name}</h4>
-          <span className="text-red-400 font-extrabold text-base">
+          <span
+            className=" font-extrabold text-base"
+            style={{
+              color: "#d45824",
+            }}
+          >
             {item.price.toLocaleString("pt-br", {
               style: "currency",
               currency: "BRL",
@@ -182,14 +188,22 @@ export default function PreviewPage() {
         s["cart-container"],
         items.length
           ? `${items.length >= 4 ? "p-4" : "h-screen p-4"}`
-          : "p-4 flex flex-col items-center justify-center h-screen"
+          : "p-4 flex flex-col items-center justify-center h-screen",
+        "pt-20"
       )}
     >
-      <h1 className="text-2xl mt-0 mb-4">Meu carrinho de compras</h1>
+      <h1 className="text-2xl mt-0 mb-4 text-center">
+        Meu carrinho de compras
+      </h1>
       {items.length ? (
         <div>
           <ul>{formateditem}</ul>
-          <div className="text-2xl text-red-400 font-extrabold flex items-center justify-between pt-4 pb-4">
+          <div
+            className="text-2xl font-extrabold flex items-center justify-between pt-4 pb-4"
+            style={{
+              color: "#d45824",
+            }}
+          >
             <span>Total: </span>
             <span>
               {totalItems.toLocaleString("pt-br", {

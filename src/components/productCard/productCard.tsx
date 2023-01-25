@@ -78,7 +78,7 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
     >
       <img
         src={proudctImage}
-        className="w-full h-full max-h-72 border-gray-200 border-solid border-b "
+        className="w-full h-full max-h-72 border-gray-200 border-solid border-b object-contain"
         alt={product.title}
         height={150}
         width={150}

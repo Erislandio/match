@@ -47,6 +47,18 @@
   padding-top: 4rem;
 }
 
+.map-section a {
+  padding: 0.75rem;
+  margin:  0 auto;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  color: #fff;
+  background-color: #d45824;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 .map-section h1 {
   font-size: 4rem;
   text-align: center;

@@ -14,6 +14,7 @@ interface MapaResponse {
   iframe: string;
   descricao: string;
   imagens: any[];
+  linkMapa?: string;
 }
 
 import s from "./casal.module.css";
@@ -44,6 +45,11 @@ export default function Mapa({ map }: { map: MapaResponse }) {
       <div className={s["map-description"]}>
         <p>{map.descricao}</p>
       </div>
+      {map.linkMapa ? (
+        <a href={map.linkMapa} target="_blank" title={map.localizacao}>
+          Abrir localização
+        </a>
+      ) : null}
       <div
         className={s["map-iframe"]}
         dangerouslySetInnerHTML={{

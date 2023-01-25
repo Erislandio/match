@@ -4,6 +4,7 @@ export const GET_MAPS_QUERY = `
             localizacao
             iframe
             descricao
+            linkMapa
             imagens {
                 id
                 url
