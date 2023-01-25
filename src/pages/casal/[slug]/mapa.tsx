@@ -46,7 +46,12 @@ export default function Mapa({ map }: { map: MapaResponse }) {
         <p>{map.descricao}</p>
       </div>
       {map.linkMapa ? (
-        <a href={map.linkMapa} target="_blank" title={map.localizacao}>
+        <a
+          href={map.linkMapa}
+          rel="noreferrer"
+          target="_blank"
+          title={map.localizacao}
+        >
           Abrir localização
         </a>
       ) : null}
