@@ -109,13 +109,17 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
         </span>
       </div>
       <button
-        onClick={handleClick}
+        onClick={() => {
+          if (product.available) {
+            handleClick();
+          }
+        }}
         className="w-full uppercase p-1 text-base mt-2 text-white"
         style={{
-          background: "#d45824",
+          background: product.available ? "#d45824" : "#ddd",
         }}
       >
-        Presentear
+        {product.available ? "Presentear" : "Já presenteado!"}
       </button>
     </div>
   );
