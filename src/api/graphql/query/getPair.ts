@@ -41,3 +41,11 @@ export const GET_PAIR_BY_SLUG = gql`
     }
   }
 `;
+
+export const GET_CONVIDADOS = gql`
+  {
+    convidados {
+      name
+    }
+  }
+`;
