@@ -42,7 +42,7 @@ export default function Lista({
         {convidados
           ?.filter((item) => item.name)
           .map((item, index) => (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{item.name}</td>
             </tr>
